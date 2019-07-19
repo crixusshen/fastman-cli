@@ -1,0 +1,28 @@
+{
+  "name": "fastman-cli",
+  "version": "0.0.1",
+  "description": "This CLI focused on standardize the tool base in the Fastman ecosystem.",
+  "main": "index.js",
+  "bin": {
+    "fastman-cli": "bin/cli.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crixusshen/fastman-cli.git"
+  },
+  "keywords": [
+    "cli"
+  ],
+  "author": "shenzhiwei",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/crixusshen/fastman-cli/issues"
+  },
+  "homepage": "https://github.com/crixusshen/fastman-cli#readme",
+  "dependencies": {
+    "commander": "^2.20.0"
+  }
+}

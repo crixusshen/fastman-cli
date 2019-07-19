@@ -1,2 +1,15 @@
 # fastman-cli
-This CLI focused on standardize the tool base in the Fastman ecosystem
+
+> 这份文档对应fastman V2版本,老版本并不支持。
+
+fastman CLI是一个基于fastman V2进行快速开发的完整系统，目标是为了提供给开发者:     
+
+* 通过`fastman-cli`搭建交互式的项目脚手架。
+* 通过`fastman-cli` + `fastman-proto`快速开始零配置原型开发。(计划中)
+* 一个运行时依赖`fastman-service`,该依赖:    
+  * 可升级；
+  * 基于webpack构建,并带有合理的默认配置；
+  * 可以通过项目内的配置文件进行配置；
+  * 可以通过插件进行扩展。
+
+fastman CLI专注于fastman生态中的工具基础标准化。它可以确保各种构建工具能够基于智能的默认配置即可平稳衔接，这样开发者可以专注于编写应用上,而不必花好几天去纠结配置问题。与此同时,它也为每个工具提供了调整配置的灵活性。     
