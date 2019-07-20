@@ -2,7 +2,7 @@
  * @Author: shenzhiwei
  * @Date: 2019-07-01 20:59:42
  * @LastEditors: shenzhiwei
- * @LastEditTime: 2019-07-17 15:47:18
+ * @LastEditTime: 2019-07-19 15:07:31
  * @Description: Bootstrap Application
  */
 import { Bootstrap, IReadiesType } from "fastman/bootstrap";
@@ -20,13 +20,17 @@ export default class App extends Bootstrap<IModel> {
   }
   protected setModel(): IModel {
     return {
-      name: "Fastman V2"
+      name: "World"
     };
   }
   protected setRedies(): IReadiesType<IModel>[] {
     return [
       (model, actions, error) => {
         console.log("readies .");
+        // // 如需要,可这样调用mutations
+        // actions.$mutationName();
+        // // 如需要,可这样调用@exportAction() effects
+        // actions.effectName(1, "2");
       }
       // 可定义其它Redies...
     ];
@@ -45,4 +49,5 @@ export default class App extends Bootstrap<IModel> {
 //   .use(yourPlugin)
 //   .use(anotherPlugin)
 //   .start($mutations);
+
 new App().start($mutations);

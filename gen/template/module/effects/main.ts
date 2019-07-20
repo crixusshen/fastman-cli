@@ -2,7 +2,7 @@
  * @Author: shenzhiwei
  * @Date: 2019-07-03 14:43:39
  * @LastEditors: shenzhiwei
- * @LastEditTime: 2019-07-17 15:54:20
+ * @LastEditTime: 2019-07-19 15:02:56
  * @Description: main effect
  */
 import {
@@ -29,7 +29,7 @@ export class Template {
   // @exportAction() // 如需要,可将该函数导出为一个effect给上层调用,例如actions.effectName(1, "2")
   // @bind // 自动绑定this作用域,一般都需要声明这个函数
   // public effectName(foo: number, bar: string) {
-  //   // 如需要,可通过此函数调用mutation函数
-  //   this.actionService.select().$XXXX();
+  //   // // 如需要,可通过此函数调用mutation函数
+  //   // this.actionService.select().$XXXX();
   // }
 }

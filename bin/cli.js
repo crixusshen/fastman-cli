@@ -1,3 +1,3 @@
 #!/usr/bin/env node
 
-require("../gen/index");
+require("../gen/index.js");

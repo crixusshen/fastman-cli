@@ -1,39 +1,31 @@
+"use strict";
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 /*
  * @Author: shenzhiwei
  * @Date: 2019-07-17 14:52:37
  * @LastEditors: shenzhiwei
- * @LastEditTime: 2019-07-17 18:47:08
- * @Description: 代码模板快速生成工具
+ * @LastEditTime: 2019-07-20 14:44:50
+ * @Description: cli for fastman framework
  */
-const program = require('commander');
-const fs = require("fs");
-const path = require("path");
-// 获取不同系统分隔符
-const sep = path.sep;
-const child_process = require("child_process");
-
-// 设置工具版本
-const packageJson = require("../package.json");
+var commander = __importStar(require("commander"));
+// commander of create
+var create_1 = __importDefault(require("./create"));
+var program = new commander.Command();
+// setting version
+var packageJson = require("../package.json");
 program.version(packageJson.version, "-v, --version");
-
-program
-  .option("-n, --name <name>", "module name,effect name or mutation name")
-  .option("-t, --template <type>", "template type, you can choose module,effect or mutation");
-
+// register commander of create
+create_1.default(program);
+// inject args of process
 program.parse(process.argv);
-
-console.log(`name: ${program.name}`);
-console.log(`template: ${program.template}`);
-
-// 定义模板路径和目标路径
-const from = path.resolve(__dirname, './template');
-const to = process.cwd();
-
-function copyDir(src, dist) {
-  console.log(src);
-  console.log(dist);
-  // child_process.exec(`cp -r ${src} ${dist}`);
-}
-
-// src
-copyDir(path.resolve(from, "src"), to);
+//# sourceMappingURL=index.js.map

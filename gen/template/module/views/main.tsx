@@ -2,7 +2,7 @@
  * @Author: shenzhiwei
  * @Date: 2019-06-26 14:09:39
  * @LastEditors: shenzhiwei
- * @LastEditTime: 2019-07-17 15:41:59
+ * @LastEditTime: 2019-07-19 14:27:59
  * @Description: main view
  */
 var { h } = require("fastman/coreman");
