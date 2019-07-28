@@ -1,10 +1,3 @@
-/*
- * @Author: shenzhiwei
- * @Date: 2019-07-01 20:59:42
- * @LastEditors: shenzhiwei
- * @LastEditTime: 2019-07-19 15:07:31
- * @Description: Bootstrap Application
- */
 import { Bootstrap, IReadiesType } from "fastman/bootstrap";
 import { IModel } from "./types";
 

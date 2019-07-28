@@ -1,10 +1,3 @@
-/*
- * @Author: shenzhiwei
- * @Date: 2019-07-03 14:43:39
- * @LastEditors: shenzhiwei
- * @LastEditTime: 2019-07-19 15:02:56
- * @Description: main effect
- */
 import {
   // inject,
   singleton
