@@ -1,6 +1,6 @@
 {
   "name": "fastman-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "This CLI focused on standardize the tool base in the Fastman ecosystem.",
   "main": "index.js",
   "bin": {
