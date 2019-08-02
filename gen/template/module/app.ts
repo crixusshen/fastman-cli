@@ -1,4 +1,4 @@
-import { Bootstrap, IReadiesType } from "fastman/bootstrap";
+import { Bootstrap, IReadiesType, IHooksType } from "fastman/bootstrap";
 import { IModel } from "./types";
 
 export default class App extends Bootstrap<IModel> {
@@ -28,7 +28,7 @@ export default class App extends Bootstrap<IModel> {
       // 可定义其它Redies...
     ];
   }
-  protected setHooks() {
+  protected setHooks(): IHooksType<IModel> {
     return {
       onPageInit: (e, pageId, $page, actions, model) => {
         console.log("onPageInit");

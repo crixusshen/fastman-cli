@@ -1,4 +1,4 @@
-// import { IProps } from "fastman/view";
+import { IProps } from "fastman/view";
 
 // Model数据类型
 export interface IModel {
