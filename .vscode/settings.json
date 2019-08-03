@@ -1,0 +1,15 @@
+{
+  "fileheader.customMade": {
+    "Author": "shenzhiwei",
+    "Date": "Do not edit",
+    "Company": "orientsec.com.cn",
+    "Description": ""
+  },
+  "fileheader.configObj": {
+    "autoAdd": true,
+    "autoAlready": true,
+    "config": {
+      "prohibitAutoAdd": [ "scss", "sass", "less", "stylus", "json", "md", "html", "htm", "sh" ]
+    }
+  },
+}

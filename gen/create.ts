@@ -1,8 +1,8 @@
 /*
  * @Author: shenzhiwei
  * @Date: 2019-07-20 09:55:57
- * @LastEditors: shenzhiwei
- * @LastEditTime: 2019-07-20 15:13:55
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2019-08-03 16:50:52
  * @Description: create a fastman V2 module
  */
 import { Command } from "commander";
@@ -10,6 +10,7 @@ import * as path from "path";
 import * as fs from "fs";
 import { rootDir, moduleTemplatePath, templateType } from "./config";
 import { cwd, copyDirSync, mkDirSync } from "./util";
+import { replaceModuleId } from "./replaceModuleId";
 
 export default (program: Command) => {
   program
@@ -43,7 +44,11 @@ export default (program: Command) => {
         if(err) {
           // mkdir if not exist
           mkDirSync(to, () => {
-            copyDirSync(from, to);
+            // copy template to dist dir
+            copyDirSync(from, to, () => {
+              // replace moduleId for template recursivively
+              replaceModuleId(to, moduleName);
+            });
             console.log(`It was successfully created in: ${to}`);
           });
         }

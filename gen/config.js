@@ -10,8 +10,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 /*
  * @Author: shenzhiwei
  * @Date: 2019-07-20 10:56:30
- * @LastEditors: shenzhiwei
- * @LastEditTime: 2019-07-20 13:11:47
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2019-08-03 16:47:12
  * @Description: define configuration params
  */
 var path = __importStar(require("path"));
@@ -27,4 +27,8 @@ exports.moduleTemplatePath = path.resolve(__dirname, './template/module');
  * the type of template, now it only supports module
  */
 exports.templateType = "module";
+/**
+ * filter file suffix regex
+ */
+exports.filterFileSuffixReg = /.+\.(ts|tsx|js|jsx)$/;
 //# sourceMappingURL=config.js.map

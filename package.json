@@ -1,6 +1,6 @@
 {
   "name": "fastman-cli",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "This CLI focused on standardize the tool base in the Fastman ecosystem.",
   "main": "index.js",
   "bin": {
@@ -23,7 +23,8 @@
   },
   "homepage": "https://github.com/crixusshen/fastman-cli#readme",
   "dependencies": {
-    "commander": "^2.20.0"
+    "commander": "^2.20.0",
+    "js-md5": "^0.7.3"
   },
   "devDependencies": {
     "@types/node": "^12.6.8",

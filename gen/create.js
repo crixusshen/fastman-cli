@@ -11,6 +11,7 @@ var path = __importStar(require("path"));
 var fs = __importStar(require("fs"));
 var config_1 = require("./config");
 var util_1 = require("./util");
+var replaceModuleId_1 = require("./replaceModuleId");
 exports.default = (function (program) {
     program
         .command("create <module-name>")
@@ -32,7 +33,11 @@ exports.default = (function (program) {
             if (err) {
                 // mkdir if not exist
                 util_1.mkDirSync(to, function () {
-                    util_1.copyDirSync(from, to);
+                    // copy template to dist dir
+                    util_1.copyDirSync(from, to, function () {
+                        // replace moduleId for template recursivively
+                        replaceModuleId_1.replaceModuleId(to, moduleName);
+                    });
                     console.log("It was successfully created in: " + to);
                 });
             }
