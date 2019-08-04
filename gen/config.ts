@@ -1,8 +1,6 @@
 /*
  * @Author: shenzhiwei
  * @Date: 2019-07-20 10:56:30
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2019-08-03 19:18:14
  * @Description: define configuration params 
  */
 import * as path from "path";
@@ -31,3 +29,26 @@ export const filterFileSuffixReg = /.+\.(ts|tsx|js|jsx)$/;
  * moduleId in the template of module
  */
 export const replaceModuleIdReg = /1383389186/g;
+
+/**
+ * define default type of file
+ */
+export const defaultFileType = "effect";
+
+/**
+ * define type of files
+ */
+export enum specificFileType {
+  effect = 1,
+  mutation,
+  view
+};
+
+/**
+ * define template、 entry and export-declaration that different types of files
+ */
+export const typeFilesMeta = new Map<specificFileType, [string, string, string]>([
+  [specificFileType.effect, ["main.ts", "index.ts", '\r\nexport * from "./$filename$";\r\n']],
+  [specificFileType.mutation, ["main.ts", "index.ts", '\r\nexport * from "./$filename$";\r\n']],
+  [specificFileType.view, ["main.tsx", "index.tsx", '\r\nexport { default as $filename$ } from "./$filename$";\r\n']],
+]);

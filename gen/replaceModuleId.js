@@ -17,6 +17,7 @@ var path = __importStar(require("path"));
 var fs = __importStar(require("fs"));
 var md5 = require('js-md5');
 var config_1 = require("./config");
+var util_1 = require("./util");
 /**
  * directory of process replace moduleId
  * @param processDir process src directory
@@ -46,7 +47,7 @@ exports.replaceModuleId = function (processDir, moduleName) {
                                     console.error("read file failure:" + err);
                                     process.exit(1);
                                 }
-                                var replacedContent = files.replace(/1383389186/g, moduleId);
+                                var replacedContent = files.replace(config_1.replaceModuleIdReg, moduleId);
                                 // begin write file
                                 fs.writeFile(path.resolve(processDir, item), replacedContent, "utf8", function (err) {
                                     if (err) {
@@ -63,6 +64,30 @@ exports.replaceModuleId = function (processDir, moduleName) {
                     // don't consider symbol link.
                 }
             });
+        });
+    });
+};
+/**
+ * specific file that it will replace moduleId
+ * @param specificFile specific file path
+ * @param moduleName specific module name
+ * @param fileName specific file name
+ */
+exports.replaceModuleIdSpecificFile = function (specificFile, moduleName, fileName) {
+    var moduleId = md5(moduleName);
+    fs.readFile(specificFile, "utf8", function (err, files) {
+        if (err) {
+            console.error("read file failure:" + err);
+            process.exit(1);
+        }
+        var replacedContent = files.replace(config_1.replaceModuleIdReg, moduleId);
+        // replace module name, otherwise it will cause conflict between other modules
+        replacedContent = replacedContent.replace(/class Main/g, "class " + util_1.LeadUpperCase(fileName));
+        fs.writeFile(specificFile, replacedContent, "utf8", function (err) {
+            if (err) {
+                console.error("write file failure:" + err);
+                process.exit(1);
+            }
         });
     });
 };

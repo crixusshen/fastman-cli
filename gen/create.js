@@ -34,7 +34,7 @@ exports.default = (function (program) {
                 // mkdir if not exist
                 util_1.mkDirSync(to, function () {
                     // copy template to dist dir
-                    util_1.copyDirSync(from, to, function () {
+                    util_1.copySync(from, to, function () {
                         // replace moduleId for template recursivively
                         replaceModuleId_1.replaceModuleId(to, moduleName);
                     });
@@ -46,7 +46,7 @@ exports.default = (function (program) {
     // it will append logs for commander of help or -h
     program.on("--help", function () {
         console.log("");
-        console.log("[options]:");
+        console.log("[create options]:");
         console.log("  -t --template [templateType]    specify the type of template, now it only support module");
         console.log("  -r --rootDir [rootDir]          specify the directory where the module will created, defaults to the src folder");
     });

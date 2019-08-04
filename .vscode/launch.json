@@ -7,7 +7,7 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Debug Program",
+      "name": "Debug Create Commander",
       "program": "${workspaceFolder}/gen/index.ts",
       "outFiles": [
         "${workspaceFolder}/gen/**/*.js"
@@ -16,10 +16,28 @@
       "args": [
         "create",
         "-r",
-        "src/d1/d2",
+        "src",
         "-t",
         "module",
         "demo-xxxxx"
+      ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug Add Commander",
+      "program": "${workspaceFolder}/gen/index.ts",
+      "outFiles": [
+        "${workspaceFolder}/gen/**/*.js"
+      ],
+      "sourceMaps": true,
+      "args": [
+        "add",
+        "-t",
+        "effect",
+        "-m",
+        "demo-xxxxx",
+        "login"
       ]
     }
   ]

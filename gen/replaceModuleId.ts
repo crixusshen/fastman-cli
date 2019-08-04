@@ -8,6 +8,7 @@ import * as path from "path";
 import * as fs from "fs";
 const md5 = require('js-md5');
 import { filterFileSuffixReg, replaceModuleIdReg } from "./config";
+import { LeadUpperCase } from './util';
 
 /**
  * directory of process replace moduleId
@@ -56,6 +57,32 @@ export const replaceModuleId = (processDir: string, moduleName: string) => {
           // don't consider symbol link.
         }
       });
+    });
+  });
+};
+
+/**
+ * specific file that it will replace moduleId
+ * @param specificFile specific file path
+ * @param moduleName specific module name
+ * @param fileName specific file name
+ */
+export const replaceModuleIdSpecificFile = (specificFile: string, moduleName: string, fileName: string) => {
+  const moduleId = md5(moduleName);
+  fs.readFile(specificFile, "utf8", (err, files) => {
+    if(err) {
+      console.error("read file failure:" + err);
+      process.exit(1);
+    }
+    let replacedContent = files.replace(replaceModuleIdReg, moduleId);
+    // replace module name, otherwise it will cause conflict between other modules
+    replacedContent = replacedContent.replace(/class Main/g, `class ${LeadUpperCase(fileName)}`);
+
+    fs.writeFile(specificFile, replacedContent, "utf8", (err) => {
+      if(err) {
+        console.error("write file failure:" + err);
+        process.exit(1);
+      }
     });
   });
 };

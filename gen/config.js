@@ -10,8 +10,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 /*
  * @Author: shenzhiwei
  * @Date: 2019-07-20 10:56:30
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2019-08-03 16:47:12
  * @Description: define configuration params
  */
 var path = __importStar(require("path"));
@@ -31,4 +29,30 @@ exports.templateType = "module";
  * filter file suffix regex
  */
 exports.filterFileSuffixReg = /.+\.(ts|tsx|js|jsx)$/;
+/**
+ * moduleId in the template of module
+ */
+exports.replaceModuleIdReg = /1383389186/g;
+/**
+ * define default type of file
+ */
+exports.defaultFileType = "effect";
+/**
+ * define type of files
+ */
+var specificFileType;
+(function (specificFileType) {
+    specificFileType[specificFileType["effect"] = 1] = "effect";
+    specificFileType[specificFileType["mutation"] = 2] = "mutation";
+    specificFileType[specificFileType["view"] = 3] = "view";
+})(specificFileType = exports.specificFileType || (exports.specificFileType = {}));
+;
+/**
+ * define template、 entry and export-declaration that different types of files
+ */
+exports.typeFilesMeta = new Map([
+    [specificFileType.effect, ["main.ts", "index.ts", '\r\nexport * from "./$filename$";\r\n']],
+    [specificFileType.mutation, ["main.ts", "index.ts", '\r\nexport * from "./$filename$";\r\n']],
+    [specificFileType.view, ["main.tsx", "index.tsx", '\r\nexport { default as $filename$ } from "./$filename$";\r\n']],
+]);
 //# sourceMappingURL=config.js.map

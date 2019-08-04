@@ -10,13 +10,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 /*
  * @Author: shenzhiwei
  * @Date: 2019-07-20 11:14:33
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2019-08-03 16:20:59
  * @Description: util tools
  */
 var child_process = __importStar(require("child_process"));
 var path = __importStar(require("path"));
 var fs = __importStar(require("fs"));
+var config_1 = require("./config");
 /**
  * current user job directory
  */
@@ -27,7 +26,7 @@ exports.cwd = process.cwd();
  * @param dist path of dist dir
  * @param cb callback function
  */
-exports.copyDirSync = function (src, dist, cb) {
+exports.copySync = function (src, dist, cb) {
     child_process.exec("cp -r " + src + " " + dist, function (error, stdout, stderr) {
         if (!error) {
             cb && cb();
@@ -47,5 +46,31 @@ exports.mkDirSync = function (dir, cb) {
         });
     }
     cb && cb();
+};
+/**
+ * query file extension by type
+ * @param type file enum type
+ */
+exports.fileExtension = function (type) {
+    var fileExt;
+    switch (type) {
+        case config_1.specificFileType.effect:
+        case config_1.specificFileType.mutation:
+            fileExt = "ts";
+            break;
+        default:
+            fileExt = "tsx";
+            break;
+    }
+    return fileExt;
+};
+/**
+ * capitalize the first letter of a word
+ * @param word str
+ */
+exports.LeadUpperCase = function (word) {
+    return word.toLowerCase().replace(/\b([\w|']+)\b/g, function (str) {
+        return str.replace(str.charAt(0), str.charAt(0).toUpperCase());
+    });
 };
 //# sourceMappingURL=util.js.map

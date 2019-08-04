@@ -2,7 +2,7 @@ var { h } = require("fastman/coreman");
 import { View, IView } from "fastman/view";
 import { IComponentProps, IModel } from "../types";
 
-export default class MainComponent extends View implements IView<IModel> {
+export default class Main extends View implements IView<IModel> {
   render(
     model: IModel & import("fastman/bootstrap").IBaseModelType<IModel>,
     actions: import("fastman/bootstrap").IAction<IModel> &

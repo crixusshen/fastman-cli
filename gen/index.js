@@ -13,19 +13,21 @@ Object.defineProperty(exports, "__esModule", { value: true });
 /*
  * @Author: shenzhiwei
  * @Date: 2019-07-17 14:52:37
- * @LastEditors: shenzhiwei
- * @LastEditTime: 2019-07-20 14:44:50
  * @Description: cli for fastman framework
  */
 var commander = __importStar(require("commander"));
 // commander of create
 var create_1 = __importDefault(require("./create"));
+// commander of add
+var add_1 = __importDefault(require("./add"));
 var program = new commander.Command();
 // setting version
 var packageJson = require("../package.json");
 program.version(packageJson.version, "-v, --version");
 // register commander of create
 create_1.default(program);
+// register commander of add
+add_1.default(program);
 // inject args of process
 program.parse(process.argv);
 //# sourceMappingURL=index.js.map
