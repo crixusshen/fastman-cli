@@ -2,7 +2,7 @@
  * @Author: shenzhiwei
  * @Date: 2019-07-20 10:56:30
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2019-08-03 16:47:12
+ * @LastEditTime: 2019-08-03 19:18:14
  * @Description: define configuration params 
  */
 import * as path from "path";
@@ -26,3 +26,8 @@ export const templateType = "module";
  * filter file suffix regex
  */
 export const filterFileSuffixReg = /.+\.(ts|tsx|js|jsx)$/;
+
+/**
+ * moduleId in the template of module
+ */
+export const replaceModuleIdReg = /1383389186/g;

@@ -7,7 +7,7 @@
 import * as path from "path";
 import * as fs from "fs";
 const md5 = require('js-md5');
-import { filterFileSuffixReg } from "./config";
+import { filterFileSuffixReg, replaceModuleIdReg } from "./config";
 
 /**
  * directory of process replace moduleId
@@ -38,7 +38,7 @@ export const replaceModuleId = (processDir: string, moduleName: string) => {
                   console.error("read file failure:" + err);
                   process.exit(1);
                 }
-                const replacedContent = files.replace(/1383389186/g, moduleId);
+                const replacedContent = files.replace(replaceModuleIdReg, moduleId);
 
                 // begin write file
                 fs.writeFile(path.resolve(processDir, item), replacedContent, "utf8", (err) => {
