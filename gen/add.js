@@ -45,7 +45,7 @@ exports.default = (function (program) {
                     replaceModuleId_1.replaceModuleIdSpecificFile(to, cmd.moduleName, fileName);
                     // inject entry declaration
                     var entryFilePath = path.resolve(to, "..", entryFile);
-                    injectEntry_1.injectFileEntry(entryFilePath, fileName, exportDeclaration);
+                    injectEntry_1.injectFileEntry(entryFilePath, fileName, exportDeclaration, config_1.specificFileType[cmd.type]);
                 });
             }
         });

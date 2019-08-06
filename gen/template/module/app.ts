@@ -21,7 +21,7 @@ export default class App extends Bootstrap<
       "/": $views.main
     };
   }
-  protected setModel(): IModel {
+  protected setModel(): Readonly<IModel> {
     return {
       name: "World"
     };

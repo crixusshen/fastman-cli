@@ -4,9 +4,9 @@
  * @Company: orientsec.com.cn
  * @Description: replace moduleId recursivively
  */
+const md5 = require('js-md5');
 import * as path from "path";
 import * as fs from "fs";
-const md5 = require('js-md5');
 import { filterFileSuffixReg, replaceModuleIdReg } from "./config";
 import { LeadUpperCase } from './util';
 
@@ -77,6 +77,10 @@ export const replaceModuleIdSpecificFile = (specificFile: string, moduleName: st
     let replacedContent = files.replace(replaceModuleIdReg, moduleId);
     // replace module name, otherwise it will cause conflict between other modules
     replacedContent = replacedContent.replace(/class Main/g, `class ${LeadUpperCase(fileName)}`);
+    // replace id of div element
+    replacedContent = replacedContent.replace(/id="mainPage"/g, `id="${fileName}Page"`);
+    // replace IExportMutationToAction<typeof import("./main")> codes, if it is exist.
+    replacedContent = replacedContent.replace(/(IExportMutationToAction<typeof import\(".+"\)>)/, `$1 & IExportMutationToAction<typeof import("./${fileName}")>`);
 
     fs.writeFile(specificFile, replacedContent, "utf8", (err) => {
       if(err) {

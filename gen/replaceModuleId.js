@@ -13,9 +13,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * @Company: orientsec.com.cn
  * @Description: replace moduleId recursivively
  */
+var md5 = require('js-md5');
 var path = __importStar(require("path"));
 var fs = __importStar(require("fs"));
-var md5 = require('js-md5');
 var config_1 = require("./config");
 var util_1 = require("./util");
 /**
@@ -83,6 +83,10 @@ exports.replaceModuleIdSpecificFile = function (specificFile, moduleName, fileNa
         var replacedContent = files.replace(config_1.replaceModuleIdReg, moduleId);
         // replace module name, otherwise it will cause conflict between other modules
         replacedContent = replacedContent.replace(/class Main/g, "class " + util_1.LeadUpperCase(fileName));
+        // replace id of div element
+        replacedContent = replacedContent.replace(/id="mainPage"/g, "id=\"" + fileName + "Page\"");
+        // replace IExportMutationToAction<typeof import("./main")> codes, if it is exist.
+        replacedContent = replacedContent.replace(/(IExportMutationToAction<typeof import\(".+"\)>)/, "$1 & IExportMutationToAction<typeof import(\"./" + fileName + "\")>");
         fs.writeFile(specificFile, replacedContent, "utf8", function (err) {
             if (err) {
                 console.error("write file failure:" + err);

@@ -59,7 +59,7 @@ export default (program: Command) => {
 
             // inject entry declaration
             const entryFilePath = path.resolve(to, "..", entryFile);
-            injectFileEntry(entryFilePath, fileName, exportDeclaration);
+            injectFileEntry(entryFilePath, fileName, exportDeclaration, specificFileType[<string>cmd.type]);
           });
         }
       });
