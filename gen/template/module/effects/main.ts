@@ -7,6 +7,7 @@ import {
 } from "fastman/annotationman";
 // 用于effect调用mutation
 import { MutationService } from "fastman/mutation";
+import { ModelService } from "fastman/model";
 import { IModel } from "../types";
 
 declare module "1383389186" {
@@ -24,21 +25,25 @@ interface IExportEffectToAction {
 // 标记该class可暴露为action，如果class只是业务逻辑的封装可以不用标记
 @action()
 export class Main implements IExportEffectToAction {
-  // /**
-  //  * effectName
-  //  * @param foo 参数1
-  //  * @param bar 参数2
-  //  */
-  // @bind
-  // public yourEffectName(foo: number, bar: string) {
-  //   // 如需要,可通过此函数调用mutation函数
-  //   this.mutationService.select().yourMutationName();
-  // }
+  /**
+   * effectName
+   * @param foo 参数1
+   * @param bar 参数2
+   */
+  @bind
+  public yourEffectName(foo: number, bar: string) {
+    // 如需要,可通过此函数调用mutation函数
+    // this.mutationService.select().yourMutationName();
+    // 如需要,可通过此函数获取model数据
+    // this.modelService.select();
+  }
 
   public constructor(
+    // @inject("IOtherEffect") private otherEffect: IOtherEffect, // 如需要,可在此处注入其它的effect模块
     private mutationService: MutationService<
       IModel,
       import("1383389186").IMutation<IModel>
-    > // @inject("IOtherEffect") private otherEffect: IOtherEffect, // 如需要,可在此处注入其它的effect模块
+    >,
+    private modelService: ModelService<IModel>
   ) {}
 }
