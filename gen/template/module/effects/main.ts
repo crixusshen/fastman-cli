@@ -1,7 +1,7 @@
 import {
   // inject,
   // injectable,
-  bind, // 用于自动绑定this作用域，不再需要定义xxx.bind(xxx)
+  // bind,
   action,
   singleton
 } from "fastman/annotationman";
@@ -30,7 +30,6 @@ export class Main implements IExportEffectToAction {
    * @param foo 参数1
    * @param bar 参数2
    */
-  @bind
   public yourEffectName(foo: number, bar: string) {
     // 如需要,可通过此函数调用mutation函数
     // this.mutationService.select().yourMutationName();
